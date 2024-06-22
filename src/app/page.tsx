@@ -19,6 +19,12 @@ const allChoices = [
   { label: "スケルトン", value: "sukeruton" },
   { label: "スライム", value: "suraimu" },
   { label: "ウィッチ", value: "witch" },
+  { label: "ブタ", value: "buta" },
+  { label: "ヒツジ", value: "hitsuji" },
+  { label: "キツネ", value: "kitune" },
+  { label: "ラクダ", value: "rakuda" },
+  { label: "ウサギ", value: "usagi" },
+  { label: "ヤギ", value: "yagi" },
 ]
 
 const uniqueChoices = (array: Choice[], num: number): Choice[] => {
