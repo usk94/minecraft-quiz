@@ -72,7 +72,7 @@ const Component = () => {
         <div className="flex flex-col items-center justify-center mt-4">
           <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
             <Image
-              src={`/${correctChoice.value}.webp`}
+              src={`/image/${correctChoice.value}.webp`}
               alt={correctChoice.value}
               priority
               width={300}
