@@ -71,15 +71,17 @@ const Component = () => {
       {!modalOpen && (
         <div className="flex flex-col items-center justify-center mt-4">
           <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
-            <Image
-              src={`/image/${correctChoice.value}.webp`}
-              alt={correctChoice.value}
-              priority
-              width={300}
-              height={400}
-              className="mr-0 sm:mr-8 sm:mb-0 object-contain"
-              loading="eager"
-            />
+            {correctChoice.value && (
+              <Image
+                src={`/image/${correctChoice.value}.webp`}
+                alt={correctChoice.value}
+                priority
+                width={300}
+                height={400}
+                className="mr-0 sm:mr-8 sm:mb-0 object-contain"
+                loading="eager"
+              />
+            )}
           </div>
           <div className="w-full flex flex-col gap-y-3 px-8 mt-4">
             {choices.map((choice) => {
