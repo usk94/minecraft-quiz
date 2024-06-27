@@ -3,11 +3,21 @@
 import { useState } from "react"
 import "./home.css"
 import Link from "next/link"
+import Image from "next/image"
 
 const Component = () => {
   return (
     <>
       <div>
+        <Image
+          src={`/image/title.webp`}
+          alt="micratitle"
+          priority
+          width={400}
+          height={200}
+          className="mt-4 object-contain"
+          loading="eager"
+        />
         <article
           id="creeper"
           role="img"
