@@ -9,15 +9,6 @@ const Component = () => {
   return (
     <>
       <div>
-        <Image
-          src={`/image/title.webp`}
-          alt="micratitle"
-          priority
-          width={400}
-          height={200}
-          className="mt-4 object-contain"
-          loading="eager"
-        />
         <article
           id="creeper"
           role="img"
@@ -49,17 +40,22 @@ const Component = () => {
         style={{
           position: "absolute",
           left: "50%",
-          bottom: 0,
+          bottom: 120,
           transform: "translateX(-50%)",
           width: 300,
-          marginBottom: 144,
         }}
       >
         <Link
           href="quiz"
           className="flex items-center justify-center rounded-lg border py-4 mx-4 border-gray-200 gap-y-4"
         >
-          <p className="text-2xl font-semibold">はじめる</p>
+          <p className="text-2xl font-semibold">カタカナクイズ</p>
+        </Link>
+        <Link
+          href="quiz"
+          className="flex items-center justify-center rounded-lg border py-4 mx-4 mt-4 border-gray-200 gap-y-4"
+        >
+          <p className="text-2xl font-semibold">さんすう</p>
         </Link>
       </div>
     </>
