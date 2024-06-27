@@ -52,7 +52,7 @@ const Component = () => {
           <p className="text-2xl font-semibold">カタカナクイズ</p>
         </Link>
         <Link
-          href="quiz"
+          href="sansu"
           className="flex items-center justify-center rounded-lg border py-4 mx-4 mt-4 border-gray-200 gap-y-4"
         >
           <p className="text-2xl font-semibold">さんすう</p>
