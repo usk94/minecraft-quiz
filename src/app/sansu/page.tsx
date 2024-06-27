@@ -25,7 +25,7 @@ const Component = () => {
 
   const handleClick = () => {
     if (Number(value) === determinedQuestion.answer) {
-      alert("正解だよ！")
+      alert("せいかいだよ！")
     } else {
       alert("はずれだよ！")
     }
@@ -34,7 +34,7 @@ const Component = () => {
   }
   return (
     <div className="h-screen">
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col p-8 h-full">
         <p className="text-2xl">{determinedQuestion.description}</p>
         <Select value={value} onChange={handleChange} className="w-20 h-10">
           {numbers.map((n) => (
@@ -44,13 +44,15 @@ const Component = () => {
           ))}
         </Select>
 
-        <button
-          onClick={handleClick}
-          style={{ marginBottom: 120 }}
-          className="flex items-center justify-center rounded-lg border py-4 px-4 border-gray-200 mt-auto"
-        >
-          <p className="text-2xl font-semibold">こたえる</p>
-        </button>
+        <div className="flex items-center justify-center mt-auto">
+          <button
+            onClick={handleClick}
+            style={{ marginBottom: 120 }}
+            className="flex items-center justify-center rounded-lg border py-4 px-4 w-48 border-gray-200"
+          >
+            <p className="text-2xl font-semibold">こたえる</p>
+          </button>
+        </div>
       </div>
     </div>
   )
