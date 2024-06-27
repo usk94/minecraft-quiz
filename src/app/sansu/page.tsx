@@ -44,7 +44,8 @@ const Component = () => {
 
         <button
           onClick={handleClick}
-          className="flex items-center justify-center rounded-lg border py-4 px-4 mb-4 border-gray-200 mt-auto"
+          style={{ marginBottom: 120 }}
+          className="flex items-center justify-center rounded-lg border py-4 px-4 border-gray-200 mt-auto"
         >
           <p className="text-2xl font-semibold">こたえる</p>
         </button>
