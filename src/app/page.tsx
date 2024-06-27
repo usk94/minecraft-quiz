@@ -1,131 +1,57 @@
 "use client"
 
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import { Modal } from "@mui/material"
-import CloseIcon from "@mui/icons-material/Close"
-
-type Choice = {
-  label: string
-  value: string
-}
-
-const allChoices = [
-  { label: "スティーブ", value: "steve" },
-  { label: "ムラビト", value: "villager" },
-  { label: "アレックス", value: "alex" },
-  { label: "クリーパー", value: "kuripa" },
-  { label: "クモ", value: "kumo" },
-  { label: "スケルトン", value: "sukeruton" },
-  { label: "スライム", value: "suraimu" },
-  { label: "ウィッチ", value: "witch" },
-  { label: "ブタ", value: "buta" },
-  { label: "ヒツジ", value: "hitsuji" },
-  { label: "キツネ", value: "kitune" },
-  { label: "ラクダ", value: "rakuda" },
-  { label: "ウサギ", value: "usagi" },
-  { label: "ヤギ", value: "yagi" },
-]
-
-const uniqueChoices = (array: Choice[], num: number): Choice[] => {
-  const shuffledArray = [...array].sort(() => Math.random() - 0.5)
-  const chosenChoices: Choice[] = []
-
-  for (let i = 0; i < shuffledArray.length && chosenChoices.length < num; i++) {
-    const currentChoice = shuffledArray[i]
-    const isDuplicated = chosenChoices.filter((choice) => choice.label === currentChoice.label).length
-    if (!isDuplicated) {
-      chosenChoices.push(currentChoice)
-    }
-  }
-
-  return chosenChoices
-}
+import { useState } from "react"
+import "./home.css"
+import Link from "next/link"
 
 const Component = () => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [didShuffle, setDidShuffle] = useState(false)
-  const [choices, setChoices] = useState<Choice[]>(Array(3).fill({ label: "", value: "" }))
-  const [correctChoice, setCorrectChoice] = useState({ label: "", value: "" })
-  const [isSelectedCorrect, setIsSelectedCorrect] = useState(false)
-  const onClickButton = (isCorrect: boolean) => {
-    setModalOpen(true)
-    setIsSelectedCorrect(isCorrect)
-  }
-  const onClickModal = () => {
-    setModalOpen(false)
-    setDidShuffle(false)
-  }
-
-  useEffect(() => {
-    if (!didShuffle) {
-      const uc = uniqueChoices(allChoices, 3)
-      setChoices(uc)
-      setCorrectChoice(uc[Math.floor(Math.random() * uc.length)])
-      setDidShuffle(true)
-    }
-  }, [didShuffle])
-
   return (
     <>
-      {!modalOpen && (
-        <div className="flex flex-col items-center justify-center mt-4">
-          <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
-            {correctChoice.value && (
-              <Image
-                src={`/image/${correctChoice.value}.webp`}
-                alt={correctChoice.value}
-                priority
-                width={300}
-                height={400}
-                className="mr-0 sm:mr-8 sm:mb-0 object-contain"
-                loading="eager"
-              />
-            )}
-          </div>
-          <div className="w-full flex flex-col gap-y-3 px-8 mt-4">
-            {choices.map((choice) => {
-              if (!choice.label) return null
-
-              return (
-                <button
-                  key={choice.label}
-                  onClick={() => onClickButton(choice.value === correctChoice.value)}
-                  className="flex items-center justify-center rounded-lg border py-4 px-4 border-gray-200 gap-y-4"
-                >
-                  <p className="text-2xl font-semibold">{choice.label}</p>
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      )}
-      <Modal
-        open={modalOpen}
-        onClose={onClickModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className="flex justify-center items-center"
+      <div>
+        <article
+          id="creeper"
+          role="img"
+          aria-label="Animated drawing of a Creeper from Minecraft. A monster made out of boxes"
+        >
+          <header>
+            <h1>MineCraft Creeper in CSS</h1>
+          </header>
+          <main>
+            <p>This is a test of a 3D drawing in CSS</p>
+          </main>
+          <footer>
+            <div className="foot">
+              <p>Youll need CSS to view this drawing.</p>
+            </div>
+            <div className="foot">
+              <p>This is a test.</p>
+            </div>
+            <div className="foot">
+              <p>Some other test :P.</p>
+            </div>
+            <div className="foot">
+              <p>CSS drawing created by Alvaro Montoro.</p>
+            </div>
+          </footer>
+        </article>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          bottom: 0,
+          transform: "translateX(-50%)",
+          width: 300,
+          marginBottom: 72,
+        }}
       >
-        {isSelectedCorrect ? (
-          <button
-            onClick={onClickModal}
-            className="inline-block w-48 h-48 sm:w-96 sm:h-96 leading-10 rounded-full border-solid border-sky-500"
-            style={{ borderWidth: 40 }}
-          />
-        ) : (
-          <button onClick={onClickModal}>
-            <CloseIcon
-              sx={{
-                fontSize: 300,
-                color: "rgb(239 68 68)",
-              }}
-            />
-            <p>せいかいは...</p>
-            <p className="text-4xl">{correctChoice.label}</p>
-          </button>
-        )}
-      </Modal>
+        <Link
+          href="quiz"
+          className="flex items-center justify-center rounded-lg border py-4 mx-4 border-gray-200 gap-y-4"
+        >
+          <p className="text-2xl font-semibold">はじめる</p>
+        </Link>
+      </div>
     </>
   )
 }
