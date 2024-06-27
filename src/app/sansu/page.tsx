@@ -26,9 +26,11 @@ const Component = () => {
   const handleClick = () => {
     if (Number(value) === determinedQuestion.answer) {
       alert("正解だよ！")
-      return
+    } else {
+      alert("はずれだよ！")
     }
-    alert("はずれだよ！")
+    setValue("")
+    setDidSort(false)
   }
   return (
     <div className="h-screen">
