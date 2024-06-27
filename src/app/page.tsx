@@ -42,7 +42,7 @@ const Component = () => {
           bottom: 0,
           transform: "translateX(-50%)",
           width: 300,
-          marginBottom: 72,
+          marginBottom: 144,
         }}
       >
         <Link
