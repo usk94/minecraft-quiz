@@ -24,6 +24,11 @@ const Component = () => {
   }
 
   const handleClick = () => {
+    if (value === "") {
+      alert("ひとつえらんでね！")
+      return
+    }
+
     if (Number(value) === determinedQuestion.answer) {
       alert("せいかいだよ！")
     } else {
