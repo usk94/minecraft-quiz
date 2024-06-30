@@ -12,7 +12,7 @@ type Choice = {
 
 const allChoices = [
   { label: "スティーブ", value: "steve" },
-  { label: "ムラビト", value: "villager" },
+  { label: "ムラビト", value: "murabito" },
   { label: "アレックス", value: "alex" },
   { label: "クリーパー", value: "kuripa" },
   { label: "クモ", value: "kumo" },
@@ -51,10 +51,10 @@ const Component = () => {
   const onClickButton = (isCorrect: boolean) => {
     setModalOpen(true)
     setIsSelectedCorrect(isCorrect)
+    setDidShuffle(false)
   }
   const onClickModal = () => {
     setModalOpen(false)
-    setDidShuffle(false)
   }
 
   useEffect(() => {
@@ -66,6 +66,8 @@ const Component = () => {
     }
   }, [didShuffle])
 
+  const isSteveOrAlex = correctChoice.value === "steve" || correctChoice.value === "alex"
+
   return (
     <>
       {!modalOpen && (
@@ -76,7 +78,7 @@ const Component = () => {
                 src={`/image/${correctChoice.value}.webp`}
                 alt={correctChoice.value}
                 priority
-                width={300}
+                width={isSteveOrAlex ? 100 : 300}
                 height={400}
                 className="mr-0 sm:mr-8 sm:mb-0 object-contain"
                 loading="eager"
