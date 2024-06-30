@@ -54,6 +54,8 @@ const allChoices = [
   { label: "ハチ", value: "mitubati" },
   { label: "サカナ", value: "sakana" },
   { label: "ウーパールーパー", value: "u-pa-ru-pa-" },
+  { label: "アイアンゴーレム", value: "iron-golem" },
+  { label: "スノウゴーレム", value: "snow-golem" },
 ]
 
 const uniqueChoices = (array: Choice[], num: number): Choice[] => {
@@ -104,7 +106,11 @@ const Component = () => {
     }
   }, [didShuffle])
 
-  const isSteveOrAlex = correctChoice.value === "steve" || correctChoice.value === "alex"
+  const shouldBeSmall =
+    correctChoice.value === "steve" ||
+    correctChoice.value === "alex" ||
+    correctChoice.value === "iron-golem" ||
+    correctChoice.value === "snow-golem"
 
   return (
     <>
@@ -117,7 +123,7 @@ const Component = () => {
                   src={`/image/${correctChoice.value}.webp`}
                   alt={correctChoice.value}
                   priority
-                  width={isSteveOrAlex ? 100 : 300}
+                  width={shouldBeSmall ? 100 : 300}
                   height={400}
                   className="mr-0 sm:mr-8 sm:mb-0 object-contain"
                 />
