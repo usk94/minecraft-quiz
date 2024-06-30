@@ -76,6 +76,7 @@ const Component = () => {
   const [didShuffle, setDidShuffle] = useState(false)
   const [choices, setChoices] = useState<Choice[]>(Array(3).fill({ label: "", value: "" }))
   const [correctChoice, setCorrectChoice] = useState({ label: "", value: "" })
+  const [previousCorrectChoiceValue, setPreviousCorrectChoiceValue] = useState("")
   const [isSelectedCorrect, setIsSelectedCorrect] = useState(false)
   const [consecutiveNumber, setConsecutiveNumber] = useState(0)
 
@@ -86,6 +87,7 @@ const Component = () => {
       setConsecutiveNumber((prev) => prev + 1)
     } else {
       setConsecutiveNumber(0)
+      setPreviousCorrectChoiceValue(correctChoice.label)
     }
     setDidShuffle(false)
   }
@@ -164,7 +166,7 @@ const Component = () => {
               }}
             />
             <p>せいかいは...</p>
-            <p className="text-4xl">{correctChoice.label}</p>
+            <p className="text-4xl">{previousCorrectChoiceValue}</p>
           </button>
         )}
       </Modal>
