@@ -34,7 +34,7 @@ const Component = () => {
       alert("せいかいだよ！")
       setConsecutiveNumber((prev) => prev + 1)
     } else {
-      alert("はずれだよ！")
+      alert(`はずれだよ！せいかいは${determinedQuestion.answer}`)
       setConsecutiveNumber(0)
     }
     setValue("")
