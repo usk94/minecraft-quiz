@@ -77,9 +77,16 @@ const Component = () => {
   const [choices, setChoices] = useState<Choice[]>(Array(3).fill({ label: "", value: "" }))
   const [correctChoice, setCorrectChoice] = useState({ label: "", value: "" })
   const [isSelectedCorrect, setIsSelectedCorrect] = useState(false)
+  const [consecutiveNumber, setConsecutiveNumber] = useState(0)
+
   const onClickButton = (isCorrect: boolean) => {
     setModalOpen(true)
     setIsSelectedCorrect(isCorrect)
+    if (isCorrect) {
+      setConsecutiveNumber((prev) => prev + 1)
+    } else {
+      setConsecutiveNumber(0)
+    }
     setDidShuffle(false)
   }
   const onClickModal = () => {
@@ -100,33 +107,38 @@ const Component = () => {
   return (
     <>
       {!modalOpen && (
-        <div className="flex flex-col items-center justify-center mt-4">
-          <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
-            {correctChoice.value && (
-              <Image
-                src={`/image/${correctChoice.value}.webp`}
-                alt={correctChoice.value}
-                priority
-                width={isSteveOrAlex ? 100 : 300}
-                height={400}
-                className="mr-0 sm:mr-8 sm:mb-0 object-contain"
-              />
-            )}
-          </div>
-          <div className="w-full flex flex-col gap-y-3 px-8 mt-4">
-            {choices.map((choice) => {
-              if (!choice.label) return null
+        <div className="h-screen px-8">
+          <div className="flex flex-col items-center justify-center mt-4 h-full">
+            <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
+              {correctChoice.value && (
+                <Image
+                  src={`/image/${correctChoice.value}.webp`}
+                  alt={correctChoice.value}
+                  priority
+                  width={isSteveOrAlex ? 100 : 300}
+                  height={400}
+                  className="mr-0 sm:mr-8 sm:mb-0 object-contain"
+                />
+              )}
+            </div>
+            <div className="w-full flex flex-col gap-y-3 mt-4">
+              {choices.map((choice) => {
+                if (!choice.label) return null
 
-              return (
-                <button
-                  key={choice.label}
-                  onClick={() => onClickButton(choice.value === correctChoice.value)}
-                  className="flex items-center justify-center rounded-lg border py-4 px-4 border-gray-200 gap-y-4"
-                >
-                  <p className="text-2xl font-semibold">{choice.label}</p>
-                </button>
-              )
-            })}
+                return (
+                  <button
+                    key={choice.label}
+                    onClick={() => onClickButton(choice.value === correctChoice.value)}
+                    className="flex items-center justify-center rounded-lg border py-4 px-4 border-gray-200 gap-y-4"
+                  >
+                    <p className="text-2xl font-semibold">{choice.label}</p>
+                  </button>
+                )
+              })}
+            </div>
+            <div className="mt-auto items-end w-full">
+              <p className="mb-36 text-right">れんぞく{consecutiveNumber}もん</p>
+            </div>
           </div>
         </div>
       )}
