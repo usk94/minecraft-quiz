@@ -52,7 +52,7 @@ const Component = () => {
           ))}
         </Select>
 
-        <div style={{ marginBottom: 120 }} className="flex items-center justify-center flex-col mt-auto">
+        <div style={{ marginBottom: 104 }} className="flex items-center justify-center flex-col mt-auto">
           <button
             onClick={handleClick}
             className="flex items-center justify-center rounded-lg border py-4 px-4 w-48 border-gray-200"
