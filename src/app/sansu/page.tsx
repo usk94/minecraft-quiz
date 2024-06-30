@@ -9,8 +9,9 @@ const Component = () => {
     description: "",
     answer: 0,
   })
-  const numbers = [...Array(10)].map((_, i) => i)
+  const numbers = [...Array(20)].map((_, i) => i)
   const [value, setValue] = useState("")
+  const [consecutiveNumber, setConsecutiveNumber] = useState(0)
 
   useEffect(() => {
     if (!didSort) {
@@ -31,8 +32,10 @@ const Component = () => {
 
     if (Number(value) === determinedQuestion.answer) {
       alert("せいかいだよ！")
+      setConsecutiveNumber((prev) => prev + 1)
     } else {
       alert("はずれだよ！")
+      setConsecutiveNumber(0)
     }
     setValue("")
     setDidSort(false)
@@ -41,7 +44,7 @@ const Component = () => {
     <div className="h-screen">
       <div className="flex flex-col p-8 h-full items-center">
         <p className="text-2xl">{determinedQuestion.description}</p>
-        <Select value={value} onChange={handleChange} className="w-40 h-10 mt-4">
+        <Select value={value} onChange={handleChange} className="w-48 h-10 mt-4">
           {numbers.map((n) => (
             <MenuItem key={n} value={n} className="h-10 border border-b-gray-200 flex justify-center items-center">
               {n}
@@ -49,14 +52,14 @@ const Component = () => {
           ))}
         </Select>
 
-        <div className="flex items-center justify-center mt-auto">
+        <div style={{ marginBottom: 120 }} className="flex items-center justify-center flex-col mt-auto">
           <button
             onClick={handleClick}
-            style={{ marginBottom: 120 }}
             className="flex items-center justify-center rounded-lg border py-4 px-4 w-48 border-gray-200"
           >
             <p className="text-2xl font-semibold">こたえる</p>
           </button>
+          <p className="text-right mt-4">れんぞく{consecutiveNumber}もん</p>
         </div>
       </div>
     </div>
