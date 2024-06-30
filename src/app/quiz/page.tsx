@@ -51,7 +51,7 @@ const allChoices = [
   { label: "イルカ", value: "iruka" },
   { label: "カエル", value: "kaeru" },
   { label: "コウモリ", value: "koumori" },
-  { label: "ミツバチ", value: "mitubati" },
+  { label: "ハチ", value: "mitubati" },
   { label: "サカナ", value: "sakana" },
   { label: "ウーパールーパー", value: "u-pa-ru-pa-" },
 ]
@@ -110,7 +110,6 @@ const Component = () => {
                 width={isSteveOrAlex ? 100 : 300}
                 height={400}
                 className="mr-0 sm:mr-8 sm:mb-0 object-contain"
-                loading="eager"
               />
             )}
           </div>
