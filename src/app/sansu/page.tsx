@@ -34,9 +34,9 @@ const Component = () => {
   }
   return (
     <div className="h-screen">
-      <div className="flex flex-col p-8 h-full">
+      <div className="flex flex-col p-8 h-full items-center">
         <p className="text-2xl">{determinedQuestion.description}</p>
-        <Select value={value} onChange={handleChange} className="w-20 h-10">
+        <Select value={value} onChange={handleChange} className="w-40 h-10 mt-4">
           {numbers.map((n) => (
             <MenuItem key={n} value={n} className="h-10 border border-b-gray-200 flex justify-center items-center">
               {n}
