@@ -102,13 +102,7 @@ const Component = () => {
           </div>
         </div>
       )}
-      <Modal
-        open={modalOpen}
-        onClose={onClickModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className="flex justify-center items-center"
-      >
+      <div className="h-screen flex justify-center items-center">
         {isSelectedCorrect ? (
           <button
             onClick={onClickModal}
@@ -127,7 +121,7 @@ const Component = () => {
             <p className="text-4xl">{correctChoice.label}</p>
           </button>
         )}
-      </Modal>
+      </div>
     </>
   )
 }
