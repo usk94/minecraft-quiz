@@ -78,6 +78,57 @@ const uniqueChoices = (array: Choice[], num: number): Choice[] => {
   return chosenChoices
 }
 
+const ModalContent = ({
+  consecutiveNumber,
+  isSelectedCorrect,
+  onClickModal,
+  previousCorrectChoiceValue,
+}: {
+  consecutiveNumber: number
+  isSelectedCorrect: boolean
+  onClickModal: () => void
+  previousCorrectChoiceValue: string
+}) => {
+  if (consecutiveNumber === 50) {
+    return (
+      <div className="flex flex-col">
+        <p className="text-white text-center text-4xl">だいせいかい！🎉</p>
+        <Image
+          src="/image/top.webp"
+          alt="100 corrects!"
+          width={400}
+          height={300}
+          className="mr-0 sm:mr-8 sm:mb-0 object-contain"
+        />
+        <p className="text-center text-4xl">🎉🎉🎉🎉🎉🎉🎉</p>
+      </div>
+    )
+  }
+
+  if (isSelectedCorrect) {
+    return (
+      <button
+        onClick={onClickModal}
+        className="inline-block w-48 h-48 sm:w-96 sm:h-96 leading-10 rounded-full border-solid border-sky-500"
+        style={{ borderWidth: 40 }}
+      />
+    )
+  }
+
+  return (
+    <button onClick={onClickModal}>
+      <CloseIcon
+        sx={{
+          fontSize: 300,
+          color: "rgb(239 68 68)",
+        }}
+      />
+      <p>せいかいは...</p>
+      <p className="text-4xl">{previousCorrectChoiceValue}</p>
+    </button>
+  )
+}
+
 const Component = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [didShuffle, setDidShuffle] = useState(false)
@@ -162,24 +213,12 @@ const Component = () => {
         aria-describedby="modal-modal-description"
         className="flex justify-center items-center"
       >
-        {isSelectedCorrect ? (
-          <button
-            onClick={onClickModal}
-            className="inline-block w-48 h-48 sm:w-96 sm:h-96 leading-10 rounded-full border-solid border-sky-500"
-            style={{ borderWidth: 40 }}
-          />
-        ) : (
-          <button onClick={onClickModal}>
-            <CloseIcon
-              sx={{
-                fontSize: 300,
-                color: "rgb(239 68 68)",
-              }}
-            />
-            <p>せいかいは...</p>
-            <p className="text-4xl">{previousCorrectChoiceValue}</p>
-          </button>
-        )}
+        <ModalContent
+          consecutiveNumber={consecutiveNumber}
+          isSelectedCorrect={isSelectedCorrect}
+          onClickModal={onClickModal}
+          previousCorrectChoiceValue={previousCorrectChoiceValue}
+        />
       </Modal>
     </>
   )
