@@ -209,7 +209,7 @@ const Component = () => {
             >
               {correctChoice.value && (
                 <Image
-                  src={`/image/mura.webp`}
+                  src={`/image/${correctChoice.value}.webp`}
                   alt={correctChoice.value}
                   priority
                   width={width}
