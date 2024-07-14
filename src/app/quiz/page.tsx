@@ -105,7 +105,7 @@ const ModalContent = ({
     )
   }
 
-  if (true) {
+  if (consecutiveNumber === 100) {
     return (
       <div className="flex flex-col">
         <p className="text-white text-center text-4xl">きみはとってもカタカナにくわしい！🎉</p>
