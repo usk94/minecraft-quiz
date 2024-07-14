@@ -179,24 +179,40 @@ const Component = () => {
     }
   }, [didShuffle])
 
+  let width = 0
+
   const shouldBeSmall =
     correctChoice.value === "steve" ||
     correctChoice.value === "alex" ||
     correctChoice.value === "iron-golem" ||
     correctChoice.value === "snow-golem"
 
+  const shouldBeLarge =
+    correctChoice.value === "mura" || correctChoice.value === "umi" || correctChoice.value === "shiro"
+
+  if (shouldBeSmall) {
+    width = 100
+  } else if (shouldBeLarge) {
+    width = 500
+  } else {
+    width = 300
+  }
+
   return (
     <>
       {!modalOpen && (
         <div className="h-screen px-8">
           <div className="flex flex-col items-center justify-center mt-4 h-full">
-            <div className="relative overflow-hidden flex justify-center items-center" style={{ width: "40%" }}>
+            <div
+              className="relative overflow-hidden flex justify-center items-center"
+              style={shouldBeLarge ? undefined : { width: "40%" }}
+            >
               {correctChoice.value && (
                 <Image
-                  src={`/image/${correctChoice.value}.webp`}
+                  src={`/image/mura.webp`}
                   alt={correctChoice.value}
                   priority
-                  width={shouldBeSmall ? 100 : 300}
+                  width={width}
                   height={400}
                   className="mr-0 sm:mr-8 sm:mb-0 object-contain"
                 />
