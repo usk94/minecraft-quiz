@@ -95,11 +95,28 @@ const ModalContent = ({
         <p className="text-white text-center text-4xl">だいせいかい！🎉</p>
         <Image
           src="/image/top.webp"
+          alt="50 corrects!"
+          width={400}
+          height={300}
+          className="mr-0 sm:mr-8 sm:mb-0 object-contain"
+        />
+        <p className="text-center text-4xl">🎉🎉🎉🎉🎉🎉🎉</p>
+      </div>
+    )
+  }
+
+  if (true) {
+    return (
+      <div className="flex flex-col">
+        <p className="text-white text-center text-4xl">きみはとってもカタカナにくわしい！🎉</p>
+        <Image
+          src="/image/nigiyaka.webp"
           alt="100 corrects!"
           width={400}
           height={300}
           className="mr-0 sm:mr-8 sm:mb-0 object-contain"
         />
+        <p className="text-center text-4xl">🎉🎉🎉🎉🎉🎉🎉</p>
         <p className="text-center text-4xl">🎉🎉🎉🎉🎉🎉🎉</p>
       </div>
     )
